@@ -478,6 +478,27 @@ body {
 														}
 													}
 												}
+												.article-content-up-box {
+													display: block;
+													width: 25px;
+													height: 25px;
+													margin-left: auto;
+													margin-right: 25px;
+													.article-content-up-link {
+														position: fixed;
+														bottom: 228px;
+														display: none;
+														overflow: hidden;
+														width: 25px;
+														height: 25px;
+														transition: .2s;
+														background: url(../img/sprites-social/arrow-up-sprites.png);
+														background-size: cover;
+													}
+													.article-content-up-link:hover {
+														background-position: 0 -26px;
+													}
+												}
 											}
 										}
 									}
