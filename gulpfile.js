@@ -4,6 +4,7 @@ const 	gulp = require('gulp'),
 		watch = require('gulp-watch'),
 		autoprefixer = require('gulp-autoprefixer'),
 		cleanCSS = require('gulp-clean-css'),
+		concat = require('gulp-concat'),
 		concatCSS = require('gulp-concat-css'),
 		sass = require('gulp-sass'),
 		sourcemaps = require('gulp-sourcemaps'),
@@ -36,12 +37,28 @@ gulp.task('style:build', function () {
 	.pipe(gulp.dest('build/css'))
 });
 
+gulp.task('js:build', function () {
+	gulp.src([
+		'src/js/callback.js',
+		'src/js/literature.js',
+		'src/js/pics.js',
+		'src/js/slider.js',
+		'src/js/social-box.js',
+		'src/js/tabs.js'
+		])
+	.pipe(sourcemaps.init())
+	.pipe(concat('main.js'))
+	.pipe(sourcemaps.write())
+	.pipe(gulp.dest('build/js'))
+});
+
 gulp.task('clean', function (cb) {
 	rimraf(path.clean, cb);
 });
 
 gulp.task('build', [
-	'style:build'
+	'style:build',
+	'js:build'
 	]);
 
 gulp.task('watch', function(){
